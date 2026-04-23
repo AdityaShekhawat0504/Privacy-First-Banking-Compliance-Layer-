@@ -16,7 +16,7 @@ demo:
 	@echo "not implemented yet"
 
 test:
-	@echo "not implemented yet"
+	uv run pytest tests/ -v
 
 lint:
-	@echo "not implemented yet"
+	uv run ruff check src/ tests/
