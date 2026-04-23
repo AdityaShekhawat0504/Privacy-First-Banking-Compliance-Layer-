@@ -1,4 +1,4 @@
-"""Full privacy transform: pseudonymisation + tokenisation applied to a transaction DataFrame.
+"""Privacy transform: pseudonymise (HMAC-SHA256) + tokenise (vault) all columns.
 
 Two architecturally distinct mechanisms are applied — they must NOT be merged:
 

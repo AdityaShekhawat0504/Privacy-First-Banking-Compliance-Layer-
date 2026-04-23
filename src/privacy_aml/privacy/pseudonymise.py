@@ -56,7 +56,8 @@ def pseudonymise(value: str | None, domain: str) -> str | None:
 
     Args:
         value: Raw identifier string, or None / NaN.
-        domain: Domain key selector ('customer', 'counterparty', 'account', 'transaction').
+        domain: Domain key — one of 'customer', 'counterparty', 'account',
+            'transaction'.
 
     Returns:
         64-char hex digest, or None if value is None/NaN.

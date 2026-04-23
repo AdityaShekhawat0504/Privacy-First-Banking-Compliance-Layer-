@@ -4,10 +4,11 @@ install:
 	uv sync --all-groups
 
 data:
-	@echo "not implemented yet"
+	uv run python -m privacy_aml.data.generate_fake
 
 synth:
-	@echo "not implemented yet"
+	uv run python -m privacy_aml.synthesis.generate
+	uv run python -m privacy_aml.synthesis.validate
 
 train:
 	@echo "not implemented yet"

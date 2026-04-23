@@ -65,7 +65,8 @@ class Vault:
             raise KeyError(
                 "Missing env var 'VAULT_KEY'. Copy .env.example to .env and set a "
                 "Fernet key (generate: python -c "
-                "\"from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())\")"
+                '"from cryptography.fernet import Fernet; '
+                'print(Fernet.generate_key().decode())")'
             )
         return key.encode()
 
@@ -139,7 +140,9 @@ class Vault:
         Returns:
             32-char UUID hex token, or None if plaintext is None/NaN.
         """
-        if plaintext is None or (not isinstance(plaintext, str) and _is_null(plaintext)):
+        if plaintext is None or (
+            not isinstance(plaintext, str) and _is_null(plaintext)
+        ):
             return None
 
         ph = self._hash_plaintext(plaintext)

@@ -1,4 +1,4 @@
-"""Privacy layer tests: HMAC determinism, vault round-trip, no cross-domain collisions."""
+"""Privacy layer tests: HMAC determinism, vault round-trip, no cross-domain collisions."""  # noqa: E501
 
 import sqlite3
 
@@ -162,11 +162,13 @@ def test_pipeline_end_to_end(all_env) -> None:
 
     # (b) pseudonymised columns contain 64-char hex strings
     for col in ("txn_id", "sender_customer_id", "receiver_counterparty_id"):
-        assert result[col].apply(lambda v: isinstance(v, str) and len(v) == 64).all(), col
+        is_valid = result[col].apply(lambda v: isinstance(v, str) and len(v) == 64)
+        assert is_valid.all(), col
 
     # (c) tokenised columns contain 32-char UUID hex strings
     for col in ("sender_iban", "receiver_iban"):
-        assert result[col].apply(lambda v: isinstance(v, str) and len(v) == 32).all(), col
+        is_valid = result[col].apply(lambda v: isinstance(v, str) and len(v) == 32)
+        assert is_valid.all(), col
 
     # (d) passthrough columns are bit-identical to input
     passthrough = [
