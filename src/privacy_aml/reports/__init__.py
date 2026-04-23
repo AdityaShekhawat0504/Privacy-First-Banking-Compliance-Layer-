@@ -1,0 +1,1 @@
+"""HTML validation report generation."""

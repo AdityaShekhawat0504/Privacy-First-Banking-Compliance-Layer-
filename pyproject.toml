@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "privacy-aml"
+version = "0.1.0"
+description = "Privacy-first banking compliance layer: pseudonymisation, synthetic data generation, and AML detection."
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "faker>=24.0",
+    "cryptography>=42.0",
+    "sdv>=1.13",
+    "ctgan>=0.9",
+    "scikit-learn>=1.4",
+    "shap>=0.45",
+    "jupyter>=1.0",
+    "matplotlib>=3.8",
+]
+
+[project.scripts]
+privacy-aml = "privacy_aml.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/privacy_aml"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

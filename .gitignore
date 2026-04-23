@@ -1,0 +1,25 @@
+# Environment
+.env
+
+# Generated data (regenerate with make data / make synth)
+data/raw/*
+data/synth/*
+data/*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Tools
+.ruff_cache/
+.ipynb_checkpoints/
+mlruns/
+.venv/
+venv/
+
+# OS
+.DS_Store
