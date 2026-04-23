@@ -11,7 +11,10 @@ synth:
 	uv run python -m privacy_aml.synthesis.validate
 
 train:
-	@echo "not implemented yet"
+	uv run python -m privacy_aml.detection.train
+
+explain:
+	uv run python -m privacy_aml.detection.explain
 
 demo:
 	@echo "not implemented yet"
