@@ -46,11 +46,11 @@ The trust boundary is the key architectural claim: everything inside the subgrap
 ```bash
 git clone https://github.com/AdityaShekhawat0504/Vaultlayer.git
 cd Vaultlayer
+make install                  # uv sync --all-groups
 cp .env.example .env
 # generate keys and paste values into .env
 openssl rand -hex 32   # run 5 times → HMAC_KEY_CUSTOMER, HMAC_KEY_COUNTERPARTY, HMAC_KEY_ACCOUNT, HMAC_KEY_TRANSACTION, VAULT_INDEX_KEY
 uv run python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"   # VAULT_KEY
-make install                  # uv sync --all-groups
 
 make data                     # generate 50 k Faker transactions  → data/raw/
 make synth                    # train CTGAN, generate + validate  → data/synth/, reports/
