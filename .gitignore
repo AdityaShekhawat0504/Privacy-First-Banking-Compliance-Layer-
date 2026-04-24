@@ -17,9 +17,14 @@ build/
 # Tools
 .ruff_cache/
 .ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+*.ipynb_checkpoints
 mlruns/
 .venv/
 venv/
+
+# Generated reports (smoke run only — keep validation_report.html and top_alerts.csv)
+reports/validation_report_smoke.html
 
 # Models
 models/*.joblib
