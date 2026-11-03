@@ -40,7 +40,9 @@ def generate_transactions(n: int = 50_000, random_state: int = 42) -> pd.DataFra
         random_state: Seed for reproducibility.
 
     Returns:
-        DataFrame with schema matching CLAUDE.md spec.
+        DataFrame with the raw transaction schema (txn_id, timestamp,
+        sender/receiver IDs and IBANs, amount_eur, currency, channel,
+        country_code, merchant_category, is_suspicious).
     """
     rng = np.random.default_rng(random_state)
     py_rng = random.Random(random_state)
