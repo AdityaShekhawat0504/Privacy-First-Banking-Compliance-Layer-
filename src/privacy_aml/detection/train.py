@@ -31,7 +31,9 @@ def _sender_txns_per_day(df: pd.DataFrame) -> pd.Series:
     half_ns = pd.Timedelta("12h").value  # nanoseconds
 
     for _, group in df.groupby("sender_customer_id", sort=False):
-        ts_ns = group["timestamp"].astype(np.int64).values
+        # Cast to ns first: pandas >= 3 may parse timestamps at s/us resolution,
+        # which would silently break the ns-based window below.
+        ts_ns = group["timestamp"].astype("datetime64[ns]").astype(np.int64).values
         sorted_ts = np.sort(ts_ns)
         counts = np.empty(len(ts_ns), dtype=np.int64)
         for i, t in enumerate(ts_ns):
