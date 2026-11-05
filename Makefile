@@ -1,4 +1,4 @@
-.PHONY: install data synth train demo test lint
+.PHONY: install data synth train explain demo test lint
 
 install:
 	uv sync --all-groups
@@ -17,7 +17,7 @@ explain:
 	uv run python -m privacy_aml.detection.explain
 
 demo:
-	@echo "not implemented yet"
+	uv run jupyter lab notebooks/demo.ipynb
 
 test:
 	uv run pytest tests/ -v
